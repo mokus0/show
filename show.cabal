@@ -1,5 +1,5 @@
 name:                show
-version:             0.4.2
+version:             0.5
 
 license:             GPL
 license-file:        LICENSE
@@ -33,7 +33,7 @@ Flag base4
 library
    exposed-modules:     ShowQ, ShowFun
 
-   build-depends:       random, QuickCheck>=2.4, smallcheck>=0.4
+   build-depends:       random, QuickCheck>=2.4, smallcheck>=1.0
    if flag(base4)
     build-depends:       base == 4.*, syb
    else

@@ -1,4 +1,4 @@
-{-# LANGUAGE NoMonomorphismRestriction #-}
+{-# LANGUAGE FlexibleContexts, NoMonomorphismRestriction #-}
 -- Helper code for runplugs
 
 module ShowQ where
@@ -8,9 +8,9 @@ import System.IO.Unsafe (unsafePerformIO)
 import Test.QuickCheck (numTests, quickCheckWithResult, stdArgs, Result(..), Testable)
 import qualified Test.SmallCheck as SC (smallCheck, Testable)
 
-mysmallcheck :: (SC.Testable prop) => prop -> ()
+mysmallcheck :: (SC.Testable IO prop) => prop -> ()
 mysmallcheck = unsafePerformIO . mysmallcheck'
-mysmallcheck' :: (SC.Testable prop) => prop -> IO ()
+mysmallcheck' :: (SC.Testable IO prop) => prop -> IO ()
 mysmallcheck' = SC.smallCheck 6
 
 myquickcheck :: Testable prop => prop -> String
