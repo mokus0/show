@@ -23,10 +23,10 @@ tests :: (Testable prop) => prop -> Int -> [[String]] -> IO String
 tests prop ntest stamps =
   do result <- quickCheckWithResult stdArgs prop
      case result of
-       NoExpectedFailure _ _ _ -> done "Arguments exhausted after" (numTests result) stamps
-       GaveUp _ _ _ -> done "Arguments exhausted after" (numTests result) stamps
-       Success _ _ _  -> done "OK, passed" (numTests result) stamps
-       Failure _ _ _ _ _ _ _ _ -> return $ "Falsifiable, after "
+       NoExpectedFailure{}  -> done "Arguments exhausted after" (numTests result) stamps
+       GaveUp{}             -> done "Arguments exhausted after" (numTests result) stamps
+       Success{}            -> done "OK, passed" (numTests result) stamps
+       Failure{}            -> return $ "Falsifiable, after "
                                   ++ show ntest
                                   ++ " tests:\n"
                                   ++ reason result
