@@ -26,10 +26,10 @@ tests prop ntest stamps =
        NoExpectedFailure _ _ _ -> done "Arguments exhausted after" (numTests result) stamps
        GaveUp _ _ _ -> done "Arguments exhausted after" (numTests result) stamps
        Success _ _ _  -> done "OK, passed" (numTests result) stamps
-       Failure _ _ _ _ _ _ _ -> return $ "Falsifiable, after "
-                                ++ show ntest
-                                ++ " tests:\n"
-                                ++ reason result
+       Failure _ _ _ _ _ _ _ _ -> return $ "Falsifiable, after "
+                                  ++ show ntest
+                                  ++ " tests:\n"
+                                  ++ reason result
 
 done :: String -> Int -> [[String]] -> IO String
 done mesg ntest stamps = return $ mesg ++ " " ++ show ntest ++ " tests" ++ table
