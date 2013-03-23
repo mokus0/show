@@ -30,7 +30,7 @@ Flag base4
 library
    exposed-modules:     ShowQ, ShowFun
 
-   build-depends:       random, QuickCheck>=2.4, smallcheck>=1.0
+   build-depends:       random, QuickCheck>=2.6, smallcheck>=1.0
    if flag(base4)
     build-depends:       base == 4.*, syb
    else
